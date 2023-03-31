@@ -1,7 +1,9 @@
-import add from '../index';
+import start from '../index';
 
-describe('add', () => {
-  it('should add two numbers', () => {
-    expect(add(1, 2)).toBe(3);
+describe('start', () => {
+  it('use', () => {
+    start((a: any) => {
+      console.log(a,'a');
+    });
   });
 });
