@@ -1,5 +1,5 @@
 # Tears of Kings
 
-template-monorepo-lib 
+tears of kings
 
 MIT
