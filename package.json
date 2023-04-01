@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Tears of Kings",
   "scripts": {
-    "start:example": "cd ./packages/tears-example && pnpm dev",
+    "start:example": "pnpm -r build && cd ./packages/tears-example && pnpm dev",
     "build": "pnpm -r build",
     "prepare": "husky install",
     "test": "pnpm -r test"
