@@ -8,8 +8,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@rrweb/types": "2.0.0-alpha.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rrweb": "2.0.0-alpha.4",
+    "rrweb-player": "1.0.0-alpha.4",
     "tears-js": "workspace:^0.0.1"
   },
   "devDependencies": {

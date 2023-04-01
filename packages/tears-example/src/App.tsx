@@ -3,7 +3,10 @@ import viteLogo from '/vite.svg';
 import './App.css';
 
 function App() {
-  throw new Error('This is a test error');
+  const makeError = () => {
+    throw new Error('Error from App');
+  };
+
   return (
     <div className="App">
       <div>
@@ -15,12 +18,13 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <button type='button' onClick={makeError}>出错</button>
       <div className="card">
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
+      <p className="read-the-docs" >
         Click on the Vite and React logos to learn more
       </p>
     </div>

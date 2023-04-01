@@ -1,24 +1,25 @@
-import { record } from "rrweb";
+import recordInit from './record';
 
-type CallbackType = (args: any[]) => void;
+type CallbackType = (...args: any[]) => void;
 
-const start = (callback: CallbackType) => {
-    const eventsMatrix = [[]];
-    
-    window.onerror = () => {
-        record({
-            emit(event, isCheckout) {
-                if (isCheckout) {
-                    eventsMatrix.push([]);
-                }
-                const lastEvents = eventsMatrix[eventsMatrix.length - 1] as (typeof event)[];
-                lastEvents.push(event);
+const tearsJsInit = (callback: CallbackType) => {
+    const [lastEvents, controlFn] = recordInit();
 
-                callback(eventsMatrix);
-            },
-            checkoutEveryNth: 200
-        });
+    window.onerror = (...errArgs) => {
+        controlFn();
+
+        const scene = lastEvents[lastEvents.length - 1];
+        const errorInfo ={
+            message: errArgs[0],
+            url: errArgs[1],
+            line: errArgs[2],
+            col: errArgs[3],
+            error: errArgs[4],
+        };
+
+        callback(errorInfo, scene);
     };
+
 };
 
-export default start;
+export default tearsJsInit;
