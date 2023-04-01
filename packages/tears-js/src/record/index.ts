@@ -8,10 +8,13 @@ const recordInit = () => {
             if (isCheckout) {
                 eventsMatrix.push([]);
             }
+            if (eventsMatrix.length > 2) {
+                eventsMatrix.shift();
+            }
             const lastEvents = eventsMatrix[eventsMatrix.length - 1];
             lastEvents.push(event);
         },
-        checkoutEveryNth: 50
+        checkoutEveryNth: 20
     });
 
     return [eventsMatrix, controlFn] as [eventWithTime[][], typeof record];

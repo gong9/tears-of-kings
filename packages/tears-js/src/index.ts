@@ -3,12 +3,14 @@ import recordInit from './record';
 type CallbackType = (...args: any[]) => void;
 
 const tearsJsInit = (callback: CallbackType) => {
-    const [lastEvents, controlFn] = recordInit();
+    const [eventsMatrix, controlFn] = recordInit();
 
     window.onerror = (...errArgs) => {
         controlFn();
 
-        const scene = lastEvents[lastEvents.length - 1];
+        const scene = [...eventsMatrix.flat()];
+        console.log(scene);
+        
         const errorInfo ={
             message: errArgs[0],
             url: errArgs[1],
